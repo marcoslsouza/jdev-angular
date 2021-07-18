@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { RoutingModule } from 'angular-routing';
+import { FormLoginModule } from './form-login/form-login.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { RoutingModule } from 'angular-routing';
   ],
   imports: [
     BrowserModule,
+    FormLoginModule,
     RoutingModule.forRoot()
   ],
   providers: [],

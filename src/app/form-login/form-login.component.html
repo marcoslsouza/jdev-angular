@@ -1,0 +1,17 @@
+<div id="form">
+    <div class="form-group">
+        <h3>{{ titulo }}</h3>
+    </div>
+
+    <div class="form-group">
+        <label for="user">E-mail</label>
+        <input type="email" class="form-control" id="user" aria-describedby="emailHelp" 
+        placeholder="Informe o e-mail" required [(ngModel)]="formLogin.login">
+    </div>
+    <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" class="form-control" id="senha" placeholder="Informe a senha" 
+        required [(ngModel)]="formLogin.senha">
+    </div>
+    <button type="button" class="btn btn-primary" (click)="realizaLogin()">Acessar</button>
+</div>
