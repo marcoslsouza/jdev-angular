@@ -19,7 +19,6 @@ export class FormLoginComponent implements OnInit {
   }
 
   public realizaLogin(): any {
-    console.log('Login: ' + this.formLogin.login + ' | ' + 'Senha: ' + this.formLogin.senha);
     this.formLoginService.login(this.formLogin).subscribe(data => {
       // O retorno é em string. Converte em JSON "JSON.parse(JSON.stringify(data))"
       let token = data.Authorization.replace('Bearer ', '');
@@ -31,6 +30,7 @@ export class FormLoginComponent implements OnInit {
     },
     error => {
       console.error('Erro ao fazer o login');
+      alert('Acesso Negado!');
     });
   }
 }
