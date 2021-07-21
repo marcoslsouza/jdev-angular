@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
-import { RoutingModule } from 'angular-routing';
+import { RoutingModule } from './app-routing.module';
 import { FormLoginModule } from './form-login/form-login.module';
+import { HomeModule } from './home/home.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,7 +15,10 @@ import { FormLoginModule } from './form-login/form-login.module';
   imports: [
     BrowserModule,
     FormLoginModule,
-    RoutingModule.forRoot()
+    HomeModule,
+    RoutingModule,
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
