@@ -2,8 +2,8 @@ import { Routes, RouterModule } from '@angular/router'
 import { FormLoginComponent } from './form-login/form-login.component';
 import { HomeComponent } from './home/home.component';
 const routes: Routes = [
-     //home
-     {
+    //home
+    {
       path: '',
       component: FormLoginComponent
     },
