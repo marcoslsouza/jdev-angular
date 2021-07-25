@@ -1,1 +1,16 @@
-<p>usuario works!</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Login</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of listUsuario">
+        <td>{{ usuario.userNome }}</td>
+        <td>{{ usuario.userCpf }}</td>
+        <td>{{ usuario.userLogin }}</td>
+        </tr>
+    </tbody>
+</table>

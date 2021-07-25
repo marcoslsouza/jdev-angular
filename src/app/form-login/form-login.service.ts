@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AppConstants } from '../app-constants';
 
 import { FormLogin } from './form-login.model';
 
@@ -13,6 +12,6 @@ export class FormLoginService {
   public login(formLogin: FormLogin): Observable<any> {
     //console.info(JSON.stringify(formLogin));
     // Converter em JSON "JSON.stringify"
-    return this.http.post(AppConstants.baseLogin, JSON.stringify(formLogin));
+    return this.http.post('/spring-boot/login', JSON.stringify(formLogin));
   }
 }
