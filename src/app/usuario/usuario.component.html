@@ -4,13 +4,17 @@
         <th scope="col">Nome</th>
         <th scope="col">CPF</th>
         <th scope="col">Login</th>
+        <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let usuario of listUsuario">
-        <td>{{ usuario.userNome }}</td>
-        <td>{{ usuario.userCpf }}</td>
-        <td>{{ usuario.userLogin }}</td>
+            <td>{{ usuario.userNome }}</td>
+            <td>{{ usuario.userCpf }}</td>
+            <td>{{ usuario.userLogin }}</td>
+            <td>
+                <button class="btin btn-primary" (click)="excluir(usuario.id)">Excluir</button>
+            </td>
         </tr>
     </tbody>
 </table>
