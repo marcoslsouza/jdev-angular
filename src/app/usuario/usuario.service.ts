@@ -15,7 +15,11 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(`${this.apiUrl}/usuario/`);
   }
 
+  public getUsuarioPorNome(nome: string): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.apiUrl}/usuario/por-nome/`+nome);
+  }
+
   public excluir(id: number): Observable<string> {
-    return this.http.delete<string>(`${this.apiUrl}/usuario/` + id);
+    return this.http.delete<string>(`${this.apiUrl}/usuario/`+id);
   }
 }

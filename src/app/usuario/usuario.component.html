@@ -1,3 +1,12 @@
+<br /><br />
+<div class="form-group row mb-2">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" [(ngModel)]="nome" id="inputNome" class="form-control" id="inputNome" placeholder="Pesquisar por nome">
+    </div>
+    <button type="button" class="btn btn-primary mb-2" (click)="carregaListaDeUsuariosPorNome()">
+        Pesquisar</button>
+</div>
+
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>

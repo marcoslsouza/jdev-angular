@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 
@@ -10,7 +11,8 @@ import { UsuarioService } from './usuario.service';
 export class UsuarioComponent implements OnInit {
 
   public listUsuario: Usuario[] = [];
-
+  public nome: string = '';
+  
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
@@ -28,6 +30,16 @@ export class UsuarioComponent implements OnInit {
 
   private carregaListaDeUsuarios() : void {
     this.usuarioService.getUsuario().subscribe(
+      response => { 
+        // console.log(response),
+        this.listUsuario = response
+      },
+      erro => { console.log(erro); }
+    );
+  }
+
+  public carregaListaDeUsuariosPorNome() : void {
+    this.usuarioService.getUsuarioPorNome(this.nome).subscribe(
       response => { 
         // console.log(response),
         this.listUsuario = response
