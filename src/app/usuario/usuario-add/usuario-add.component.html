@@ -23,7 +23,7 @@
                 autocomplete="false" [(ngModel)]="usuario.userLogin" required>
         </div>
     </div>
-    <div class="form-row" *ngIf="op == 'salvar'">
+    <!--<div class="form-row" *ngIf="op == 'salvar'">
         <div class="form-group col-md-2">
             <label for="inputSenha">Senha</label>
             <input type="password" class="form-control" id="inputSenha" placeholder="Digite a senha" 
@@ -34,14 +34,15 @@
             <input type="password" class="form-control" id="inputConfirmSenha" placeholder="Digite a senha novamente" 
                 autocomplete="false" required maxlength="6">
         </div>
-    </div>
+    </div>-->
 
     <div class="form-row">
         <div class="form-group col-md-7" id="divBotoes">
             <button type="button" class="btn btn-warning" routerLink="/usuarios">Voltar</button>
-            <button type="button" class="btn btn-primary" id="btnGravar" *ngIf="op == 'salvar'">Gravar</button>
+            <button type="button" class="btn btn-primary" id="btnGravar" *ngIf="op == 'salvar'"
+            (click)="salvarAtualizarUsuario()">Gravar</button>
             <button type="button" class="btn btn-primary" id="btnAlterar" *ngIf="op == 'editar'" 
-            (click)="salvarUsuario()">Alterar</button>
+            (click)="salvarAtualizarUsuario()">Alterar</button>
         </div>
     </div>
   </div>

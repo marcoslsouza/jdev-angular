@@ -25,7 +25,6 @@ export class UsuarioAddComponent implements OnInit {
       console.log('Valor sendo editado: ' + id);
       this.op = 'editar';
       this.usuarioService.getUsuarioPorId(id).subscribe(response => {
-        console.log(response);
         this.usuario = response;
       },
       erro => { console.log('Erro ao recuperar usuario: ' + erro); }
@@ -35,7 +34,24 @@ export class UsuarioAddComponent implements OnInit {
     }
   }
 
-  public salvarUsuario(): void {
-    console.log(this.usuario);
+  public salvarAtualizarUsuario(): void {
+    if(this.op == 'salvar') {
+      this.usuarioService.salvarUsuario(this.usuario).subscribe(response => {
+        this.usuario = response;
+        this.novo();
+      },
+      erro => { console.log('Erro ao salvar usuario: ' + erro); }
+      );
+    } else {
+      this.usuarioService.atualizarUsuario(this.usuario).subscribe(response => {
+        this.usuario = response;
+      },
+      erro => { console.log('Erro ao atualizar usuario: ' + erro); }
+      );
+    }
+  }
+
+  private novo(): void {
+    this.usuario = new Usuario();
   }
 }

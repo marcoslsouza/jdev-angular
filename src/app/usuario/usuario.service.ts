@@ -26,4 +26,12 @@ export class UsuarioService {
   public excluir(id: number): Observable<string> {
     return this.http.delete<string>(`${this.apiUrl}/usuario/`+id);
   }
+
+  public salvarUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.apiUrl}/usuario/`, usuario);
+  } 
+
+  public atualizarUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.apiUrl}/usuario/`, usuario);
+  } 
 }
