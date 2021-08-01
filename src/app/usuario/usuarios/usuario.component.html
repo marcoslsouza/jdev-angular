@@ -1,0 +1,62 @@
+<br /><br />
+<div class="form-group row mb-2">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" [(ngModel)]="nome" id="inputNome" class="form-control" id="inputNome" 
+            placeholder="Pesquisar por nome">
+    </div>
+    <button type="button" class="btn btn-primary mb-2" (click)="carregaListaDeUsuariosPorNome()">
+        Buscar</button>
+    <button type="button" class="btn btn-success mb-2" routerLink="../usuario/add" id="btnNovo">
+        Novo</button>
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Login</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of listUsuario">
+            <td>{{ usuario.userNome }}</td>
+            <td>{{ usuario.userCpf }}</td>
+            <td>{{ usuario.userLogin }}</td>
+            <td>
+                <button class="btn btn-primary " data-toggle="modal" data-target="#modalExcluir" 
+                    (click)="idUsuario = usuario.id">Excluir</button>
+                <button routerLink="../usuario/add/{{usuario.id}}"  
+                    class="btn btn-warning" id="btnEditar">
+                    Editar
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal de confirmacao para excluir -->
+<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Excluir</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Tem certeza de que deseja excluir?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+          <button type="button" class="btn btn-primary" (click)="excluir()" data-dismiss="modal">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

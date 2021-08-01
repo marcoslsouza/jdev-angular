@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { UsuarioService } from './usuario.service';
-import { UsuarioComponent } from './usuario.component';
+import { UsuarioService } from './usuarios/usuario.service';
+import { UsuarioComponent } from './usuarios/usuario.component';
 import { FormsModule } from '@angular/forms';
+import { UsuarioAddComponent } from './usuario-add/usuario-add.component';
 
 @NgModule({
   declarations: [
-    UsuarioComponent
+    UsuarioComponent,
+    UsuarioAddComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [
     UsuarioService

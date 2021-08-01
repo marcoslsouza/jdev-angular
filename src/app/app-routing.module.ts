@@ -1,7 +1,9 @@
 import { Routes, RouterModule } from '@angular/router'
 import { FormLoginComponent } from './form-login/form-login.component';
 import { HomeComponent } from './home/home.component';
-import { UsuarioComponent } from './usuario/usuario.component';
+import { UsuarioAddComponent } from './usuario/usuario-add/usuario-add.component';
+import { UsuarioComponent } from './usuario/usuarios/usuario.component';
+
 const routes: Routes = [
     //home
     {
@@ -15,6 +17,14 @@ const routes: Routes = [
     {
       path: 'usuarios',
       component: UsuarioComponent
+    },
+    {
+      path: 'usuario/add',
+      component: UsuarioAddComponent
+    },
+    {
+      path: 'usuario/add/:id',
+      component: UsuarioAddComponent
     }
 ];
 export const RoutingModule = RouterModule.forRoot(routes);
