@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-add',
@@ -8,14 +8,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UsuarioAddComponent implements OnInit {
 
-  constructor(private routeActive: ActivatedRoute) { }
+  public op: string = 'salvar';
+
+  constructor(private routeActive: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     
     let id = this.routeActive.snapshot.paramMap.get('id');
 
-    if(id != null)
-      console.log('Valor sendo editado: ' + id); 
+    if(id != null) {
+      console.log('Valor sendo editado: ' + id);
+      this.op = 'editar';
+    } else {
+      
+    }
   }
 
 }
