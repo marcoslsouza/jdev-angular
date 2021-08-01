@@ -3,36 +3,36 @@
     <div class="form-row">
       <div class="form-group col-md-1" *ngIf="op == 'editar'">
         <label>Id</label>
-        <input type="input" readonly class="form-control" id="inputId" value="">
+        <input type="input" readonly class="form-control" id="inputId" [(ngModel)]="usuario.id">
       </div>
       <div class="form-group col-md-3">
         <label for="inputNome">Nome</label>
         <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome" 
-            autocomplete="false" value="" required>
+            autocomplete="false" [(ngModel)]="usuario.userNome" required>
       </div>
       <div class="form-group col-md-3">
         <label for="inputCPF">CPF</label>
         <input type="text" class="form-control" id="inputCPF" placeholder="Digite o CPF" 
-            autocomplete="false" value="" required>
+            autocomplete="false" [(ngModel)]="usuario.userCpf" required>
       </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputLogin">Login</label>
             <input type="text" class="form-control" id="inputLogin" placeholder="Digite o login" 
-                autocomplete="false" value="" required>
+                autocomplete="false" [(ngModel)]="usuario.userLogin" required>
         </div>
     </div>
-    <div class="form-row">
+    <div class="form-row" *ngIf="op == 'salvar'">
         <div class="form-group col-md-2">
             <label for="inputSenha">Senha</label>
             <input type="password" class="form-control" id="inputSenha" placeholder="Digite a senha" 
-                autocomplete="false" value="" required maxlength="6">
+                autocomplete="false" required maxlength="6">
         </div>
         <div class="form-group col-md-2">
             <label for="inputConfirmSenha">Confirmar a Senha</label>
             <input type="password" class="form-control" id="inputConfirmSenha" placeholder="Digite a senha novamente" 
-                autocomplete="false" value="" required maxlength="6">
+                autocomplete="false" required maxlength="6">
         </div>
     </div>
 
@@ -40,7 +40,8 @@
         <div class="form-group col-md-7" id="divBotoes">
             <button type="button" class="btn btn-warning" routerLink="/usuarios">Voltar</button>
             <button type="button" class="btn btn-primary" id="btnGravar" *ngIf="op == 'salvar'">Gravar</button>
-            <button type="button" class="btn btn-primary" id="btnGravar" *ngIf="op == 'editar'">Alterar</button>
+            <button type="button" class="btn btn-primary" id="btnAlterar" *ngIf="op == 'editar'" 
+            (click)="salvarUsuario()">Alterar</button>
         </div>
     </div>
   </div>

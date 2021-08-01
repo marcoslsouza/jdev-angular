@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Usuario } from './usuario';
-import { UsuarioService } from './usuario.service';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-usuario',
