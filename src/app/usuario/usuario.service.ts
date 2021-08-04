@@ -33,5 +33,13 @@ export class UsuarioService {
 
   public atualizarUsuario(usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.apiUrl}/usuario/`, usuario);
-  } 
+  }
+
+  public usuarioLogado(): boolean {
+    if(localStorage.getItem('token') !== null) {
+      return true
+    } else {
+      return false;
+    }
+  }
 }
