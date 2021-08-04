@@ -1,26 +1,30 @@
 <h3 id="tituloForm">Cadastro de usuários</h3>
-<div>
+
+<form style="padding: 10px;" #formValidate="ngForm">
     <div class="form-row">
       <div class="form-group col-md-1" *ngIf="op == 'editar'">
         <label>Id</label>
-        <input type="input" readonly class="form-control" id="inputId" [(ngModel)]="usuario.id">
+        <input type="input" readonly class="form-control" id="inputId" name="inputId" [(ngModel)]="usuario.id">
       </div>
       <div class="form-group col-md-3">
         <label for="inputNome">Nome</label>
-        <input type="text" class="form-control" id="inputNome" placeholder="Digite o nome" 
-            autocomplete="false" [(ngModel)]="usuario.userNome" required>
+        <span id="asteriscoRequired" *ngIf="nomeValidate.invalid"> *</span>
+        <input type="text" class="form-control" id="inputNome" name="inputNome" placeholder="Digite o nome" 
+            autocomplete="false" [(ngModel)]="usuario.userNome" #nomeValidate="ngModel" required>
       </div>
       <div class="form-group col-md-3">
         <label for="inputCPF">CPF</label>
-        <input type="text" class="form-control" id="inputCPF" placeholder="Digite o CPF" 
-            autocomplete="false" [(ngModel)]="usuario.userCpf" required>
+        <span id="asteriscoRequired" *ngIf="cpfValidate.invalid"> *</span>
+        <input type="text" class="form-control" id="inputCPF" name="inputCPF" placeholder="Digite o CPF" 
+            autocomplete="false" [(ngModel)]="usuario.userCpf" #cpfValidate="ngModel" required>
       </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputLogin">Login</label>
-            <input type="text" class="form-control" id="inputLogin" placeholder="Digite o login" 
-                autocomplete="false" [(ngModel)]="usuario.userLogin" required>
+            <span id="asteriscoRequired" *ngIf="loginValidate.invalid"> *</span>
+            <input type="text" class="form-control" id="inputLogin" name="inputLogin" placeholder="Digite o login" 
+                autocomplete="false" [(ngModel)]="usuario.userLogin" #loginValidate="ngModel" required>
         </div>
     </div>
     <!--<div class="form-row" *ngIf="op == 'salvar'">
@@ -40,9 +44,9 @@
         <div class="form-group col-md-7" id="divBotoes">
             <button type="button" class="btn btn-warning" routerLink="/usuarios">Voltar</button>
             <button type="button" class="btn btn-primary" id="btnGravar" *ngIf="op == 'salvar'"
-            (click)="salvarAtualizarUsuario()">Gravar</button>
+            (click)="salvarAtualizarUsuario()" [disabled]="formValidate.invalid">Gravar</button>
             <button type="button" class="btn btn-primary" id="btnAlterar" *ngIf="op == 'editar'" 
             (click)="salvarAtualizarUsuario()">Alterar</button>
         </div>
     </div>
-  </div>
+  </form>

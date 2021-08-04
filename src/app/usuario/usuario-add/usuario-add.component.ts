@@ -11,9 +11,8 @@ import { Usuario } from '../usuarios/usuario';
 export class UsuarioAddComponent implements OnInit {
 
   public usuario = new Usuario();
-
   public op: string = 'salvar';
-
+  
   constructor(private routeActive: ActivatedRoute, private router: Router, 
     private usuarioService: UsuarioService) { }
 

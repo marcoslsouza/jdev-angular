@@ -9,3 +9,16 @@
 #btnGravar, #btnAlterar {
     margin-left: 5px;
 }
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+}
+
+#asteriscoRequired {
+    color: red;
+    font-size: 23px;
+}
