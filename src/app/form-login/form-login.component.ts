@@ -17,6 +17,10 @@ export class FormLoginComponent implements OnInit {
   constructor(private formLoginService: FormLoginService, private router : Router) { }
 
   ngOnInit(): void {
+    // Se existir o token redireciona para home
+    if(localStorage.getItem('token') !== null) {
+      this.router.navigate(['home']);
+    }
   }
 
   public realizaLogin(): any {

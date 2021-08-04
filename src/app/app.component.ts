@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  title = 'jdev-angular';
-  token = localStorage.getItem('token');
-
+  public title = 'jdev-angular';
+  public token = localStorage.getItem('token');
+  
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -24,5 +24,13 @@ export class AppComponent implements OnInit {
   public sair() {
     localStorage.clear();
     this.router.navigate(['']);
+  }
+
+  public esconderBarra(): boolean {
+    if(localStorage.getItem('token') !== null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
