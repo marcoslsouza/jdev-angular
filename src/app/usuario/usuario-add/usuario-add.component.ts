@@ -12,7 +12,7 @@ export class UsuarioAddComponent implements OnInit {
 
   public usuario = new Usuario();
   public op: string = 'salvar';
-  
+ 
   constructor(private routeActive: ActivatedRoute, private router: Router, 
     private usuarioService: UsuarioService) { }
 
@@ -39,13 +39,15 @@ export class UsuarioAddComponent implements OnInit {
         this.usuario = response;
         this.novo();
       },
-      erro => { console.log('Erro ao salvar usuario: ' + erro); }
+      erro => { 
+        console.log('Erro ao salvar usuario: ' + erro); }
       );
     } else {
       this.usuarioService.atualizarUsuario(this.usuario).subscribe(response => {
         this.usuario = response;
       },
-      erro => { console.log('Erro ao atualizar usuario: ' + erro); }
+      erro => { 
+        console.log('Erro ao atualizar usuario: ' + erro); }
       );
     }
   }
