@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../usuario.service';
-import { Usuario } from '../usuarios/usuario';
+import { Usuario } from '../usuario';
 
 @Component({
   selector: 'app-usuario-add',
@@ -12,7 +12,7 @@ export class UsuarioAddComponent implements OnInit {
 
   public usuario = new Usuario();
   public op: string = 'salvar';
- 
+  
   constructor(private routeActive: ActivatedRoute, private router: Router, 
     private usuarioService: UsuarioService) { }
 
@@ -24,6 +24,7 @@ export class UsuarioAddComponent implements OnInit {
       console.log('Valor sendo editado: ' + id);
       this.op = 'editar';
       this.usuarioService.getUsuarioPorId(id).subscribe(response => {
+        console.log(response);
         this.usuario = response;
       },
       erro => { console.log('Erro ao recuperar usuario: ' + erro); }

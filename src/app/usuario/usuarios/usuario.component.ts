@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Usuario } from './usuario';
+import { Usuario } from '../usuario';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
@@ -36,7 +36,7 @@ export class UsuarioComponent implements OnInit {
   private carregaListaDeUsuarios() : void {
     this.usuarioService.getUsuario().subscribe(
       response => { 
-        // console.log(response),
+        console.log(response),
         this.listUsuario = response
       },
       erro => { console.log(erro); }
@@ -47,7 +47,7 @@ export class UsuarioComponent implements OnInit {
     if(this.nome != '') {
       this.usuarioService.getUsuarioPorNome(this.nome).subscribe(
         response => { 
-          // console.log(response),
+          //console.log(response),
           this.listUsuario = response
         },
         erro => { console.log(erro); }
