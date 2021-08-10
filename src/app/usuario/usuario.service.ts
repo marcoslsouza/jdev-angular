@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Telefone } from './telefone';
 import { Usuario } from './usuario';
 
 @Injectable()
@@ -33,6 +34,10 @@ export class UsuarioService {
 
   public atualizarUsuario(usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.apiUrl}/usuario/`, usuario);
+  }
+
+  public excluirTelefone(id: number): Observable<string> {
+    return this.http.delete<string>(`${this.apiUrl}/usuario/remover-telefone/`+id);
   }
 
   public usuarioLogado(): boolean {
