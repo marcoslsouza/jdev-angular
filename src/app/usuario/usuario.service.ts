@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -38,6 +38,10 @@ export class UsuarioService {
 
   public excluirTelefone(id: number): Observable<string> {
     return this.http.delete<string>(`${this.apiUrl}/usuario/remover-telefone/`+id);
+  }
+
+  public salvarTelefone(id: number, telefone: Telefone): Observable<Telefone> {
+    return this.http.post<Telefone>(`${this.apiUrl}/usuario/${id}/telefone/`, telefone);
   }
 
   public usuarioLogado(): boolean {

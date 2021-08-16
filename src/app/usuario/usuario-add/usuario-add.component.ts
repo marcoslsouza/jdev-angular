@@ -21,6 +21,9 @@ export class UsuarioAddComponent implements OnInit {
   public titulo: string = 'Excluir - Telefone';
   public msgExcluirTelefone = 'Tem certeza de que deseja excluir o telefone?';
   public idTelefoneParaExcluir: number = 0;
+  public telefone = new Telefone();
+
+  private indexTelefone: number = 0;
   
   // Passa o cabecalho do metodo como string para o componente de dialogo (confirm-excluir)
   //public metodoExcluir: string = 'excluirTelefone(usuario.id)';
@@ -37,8 +40,8 @@ export class UsuarioAddComponent implements OnInit {
       //console.log('Valor sendo editado: ' + id);
       this.op = 'editar';
       this.usuarioService.getUsuarioPorId(this.id).subscribe(response => {
-        console.log(response);
         this.usuario = response;
+        console.log(response);
       },
       erro => { console.log('Erro ao recuperar usuario: ' + erro); }
       );
@@ -66,7 +69,8 @@ export class UsuarioAddComponent implements OnInit {
     }
   }
 
-  public atribuiValorIdTelefoneParaExcluir(id: number): void {
+  public atribuiValoresIdTelefoneComIndiceParaExcluir(id: number, i: number): void {
+    this.indexTelefone = i;
     this.idTelefoneParaExcluir = id;
     console.log(this.idTelefoneParaExcluir);
   }
@@ -77,27 +81,41 @@ export class UsuarioAddComponent implements OnInit {
 
     if(event.excluir == 'sim') {
 
-     /* this.usuario.userTelefones.forEach((tel, index) => {
-        if(tel.id == this.idTelefoneParaExcluir) {
-          this.usuario.userTelefones.splice(index, 1);
-        }
-      });*/
+      // Se o telefone ainda nao foi persistido no banco de dados.
+      if(this.idTelefoneParaExcluir == 0) {
+        this.usuario.userTelefones.splice(this.indexTelefone, 1);       
+      } else {
+        this.usuarioService.excluirTelefone(this.idTelefoneParaExcluir).subscribe(response => {
 
-     this.usuarioService.excluirTelefone(this.idTelefoneParaExcluir).subscribe(response => {
-
-        // Excluir a linha da tabela de telefones
-        this.usuario.userTelefones.forEach((tel, index) => {
-          if(tel.id == this.idTelefoneParaExcluir) {
-            this.usuario.userTelefones.splice(index, 1);
-          }
+          // Excluir a linha da tabela de telefones
+          /*this.usuario.userTelefones.forEach((tel, index) => {
+            if(tel.id == this.idTelefoneParaExcluir) {
+              this.usuario.userTelefones.splice(index, 1);
+            }
+          });*/
+          this.usuario.userTelefones.splice(this.indexTelefone, 1);
+  
+          console.log("Telefone excluído com sucesso!");
+        },
+        erro => { 
+          console.log('Erro ao excluir telefone: ' + erro); 
         });
-
-        console.log("Telefone excluído com sucesso!");
-      },
-      erro => { 
-        console.log('Erro ao excluir telefone: ' + erro); 
-      });
+      }
     }
+  }
+
+  public addTelefone(): void {
+    let tel = new Telefone();
+    tel.numero = this.telefone.numero;
+    this.usuario.userTelefones.push(tel);
+    console.log(this.usuario.userTelefones);
+
+    /*this.usuarioService.salvarTelefone(this.usuario.id, this.telefone).subscribe(response => {
+      this.usuario.userTelefones.push(response);
+    },
+    erro => { 
+      console.log('Erro ao salvar telefone: ' + erro); }
+    );*/
   }
 
   private novo(): void {
