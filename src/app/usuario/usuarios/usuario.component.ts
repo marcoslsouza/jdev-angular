@@ -14,6 +14,9 @@ export class UsuarioComponent implements OnInit {
   public listUsuario: Usuario[] = [];
   public nome: string = '';
   public idUsuario: number = 0;
+
+  public msgExcluirUsuario = '';
+  public titulo: string = 'Excluir - Usuário';
   
   constructor(private usuarioService: UsuarioService, private router : Router) { }
 
@@ -21,16 +24,27 @@ export class UsuarioComponent implements OnInit {
     this.carregaListaDeUsuarios();
   }
 
-  public excluir() : void {
-    if(this.idUsuario != 0) {
-      this.usuarioService.excluir(this.idUsuario).subscribe(response => {
-        console.log('Usuário excluido com sucesso!');
-        this.carregaListaDeUsuarios();
-      },
-      erro => { console.log('Erro ao excluir usuario: ' + erro); }
-      );
-    } else
-        console.log('Id usuario: ' + this.idUsuario);
+  public recebeDadosUsuarioParaExcluir(id: number, nome: string) {
+    this.idUsuario = id;
+    this.msgExcluirUsuario = `Tem certeza de que deseja excluir o usuário ${nome}?`;
+  }
+
+  public excluirUsuario(event: any) : void {
+
+    console.log(this.idUsuario);
+
+    if(event.excluir == 'sim') {
+    
+      if(this.idUsuario != 0) {
+        this.usuarioService.excluir(this.idUsuario).subscribe(response => {
+          console.log('Usuário excluido com sucesso!');
+          this.carregaListaDeUsuarios();
+        },
+        erro => { console.log('Erro ao excluir usuario: ' + erro); }
+        );
+      } else
+          console.log('Id usuario: ' + this.idUsuario);
+    }
   }
 
   private carregaListaDeUsuarios() : void {
