@@ -16,7 +16,8 @@
         <label for="inputCPF">CPF</label>
         <span id="asteriscoRequired" *ngIf="cpfValidate.invalid"> *</span>
         <input type="text" class="form-control" id="inputCPF" name="inputCPF" placeholder="Digite o CPF" 
-            autocomplete="false" [(ngModel)]="usuario.userCpf" #cpfValidate="ngModel" required>
+            autocomplete="false" [(ngModel)]="usuario.userCpf" #cpfValidate="ngModel" mask="000.000.000-00" 
+            required>
       </div>
     </div>
     <div class="form-row">
@@ -36,7 +37,7 @@
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <form #formValidateTel="ngForm">
-                        <input type="text" class="form-control" name="telefone" [(ngModel)]="telefone.numero">
+                        <input type="text" mask="(00) 0 0000-0000" class="form-control" name="telefone" [(ngModel)]="telefone.numero">
                     </form>
                 </div>
                 <div class="form-group col-md-2">
@@ -49,7 +50,7 @@
     <table class="table">
         <tbody>
             <tr *ngFor="let tel of usuario.userTelefones; let i = index">
-                <td *ngIf="tel.numero">{{ tel.numero }}</td>
+                <td *ngIf="tel.numero">{{ tel.numero | mask:'(00) 0 0000-0000' }}</td>
                 <td *ngIf="tel.numero">
                     <button type="button" class="btn btn-danger" id="btnExcluirTel" 
                         data-toggle="modal" data-target="#modalExcluir" (click)="atribuiValoresIdTelefoneComIndiceParaExcluir(tel.id, i)">
